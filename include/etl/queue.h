@@ -306,9 +306,9 @@ namespace etl
     //*************************************************************************
     /// Adds a value to the queue.
     /// If asserts or exceptions are enabled, throws an etl::queue_full if the queue if already full.
-    ///\param value The value to push to the queue.
+    ///\param value The value to push_back to the queue.
     //*************************************************************************
-    void push(const_reference value)
+    void push_back(const_reference value)
     {
 #if defined(ETL_CHECK_PUSH_POP)
       ETL_ASSERT(!full(), ETL_ERROR(queue_full));
@@ -321,9 +321,9 @@ namespace etl
     //*************************************************************************
     /// Adds a value to the queue.
     /// If asserts or exceptions are enabled, throws an etl::queue_full if the queue if already full.
-    ///\param value The value to push to the queue.
+    ///\param value The value to push_back to the queue.
     //*************************************************************************
-    void push(rvalue_reference value)
+    void push_back(rvalue_reference value)
     {
 #if defined(ETL_CHECK_PUSH_POP)
       ETL_ASSERT(!full(), ETL_ERROR(queue_full));
@@ -337,7 +337,7 @@ namespace etl
     //*************************************************************************
     /// Constructs a value in the queue 'in place'.
     /// If asserts or exceptions are enabled, throws an etl::queue_full if the queue if already full.
-    ///\param value The value to use to construct the item to push to the queue.
+    ///\param value The value to use to construct the item to push_back to the queue.
     //*************************************************************************
     template <typename ... Args>
     void emplace(Args && ... args)
@@ -352,7 +352,7 @@ namespace etl
     //*************************************************************************
     /// Constructs a value in the queue 'in place'.
     /// If asserts or exceptions are enabled, throws an etl::queue_full if the queue if already full.
-    ///\param value The value to use to construct the item to push to the queue.
+    ///\param value The value to use to construct the item to push_back to the queue.
     //*************************************************************************
     void emplace()
     {
@@ -366,7 +366,7 @@ namespace etl
     //*************************************************************************
     /// Constructs a value in the queue 'in place'.
     /// If asserts or exceptions are enabled, throws an etl::queue_full if the queue if already full.
-    ///\param value The value to use to construct the item to push to the queue.
+    ///\param value The value to use to construct the item to push_back to the queue.
     //*************************************************************************
     template <typename T1>
     void emplace(const T1& value1)
@@ -381,7 +381,7 @@ namespace etl
     //*************************************************************************
     /// Constructs a value in the queue 'in place'.
     /// If asserts or exceptions are enabled, throws an etl::queue_full if the queue if already full.
-    ///\param value The value to use to construct the item to push to the queue.
+    ///\param value The value to use to construct the item to push_back to the queue.
     //*************************************************************************
     template <typename T1, typename T2>
     void emplace(const T1& value1, const T2& value2)
@@ -396,7 +396,7 @@ namespace etl
     //*************************************************************************
     /// Constructs a value in the queue 'in place'.
     /// If asserts or exceptions are enabled, throws an etl::queue_full if the queue if already full.
-    ///\param value The value to use to construct the item to push to the queue.
+    ///\param value The value to use to construct the item to push_back to the queue.
     //*************************************************************************
     template <typename T1, typename T2, typename T3>
     void emplace(const T1& value1, const T2& value2, const T3& value3)
@@ -411,7 +411,7 @@ namespace etl
     //*************************************************************************
     /// Constructs a value in the queue 'in place'.
     /// If asserts or exceptions are enabled, throws an etl::queue_full if the queue if already full.
-    ///\param value The value to use to construct the item to push to the queue.
+    ///\param value The value to use to construct the item to push_back to the queue.
     //*************************************************************************
     template <typename T1, typename T2, typename T3, typename T4>
     void emplace(const T1& value1, const T2& value2, const T3& value3, const T4& value4)
@@ -474,12 +474,12 @@ namespace etl
     /// Gets the oldest value and removes it from the front of the queue and
     /// pushes it to the destination container.
     /// If asserts or exceptions are enabled, throws an etl::queue_empty if the queue is empty.
-    /// NOTE: The destination must support a push(T) member function.
+    /// NOTE: The destination must support a push_back(T) member function.
     //*************************************************************************
     template <typename TContainer>
     void pop_into(TContainer& destination)
     {
-      destination.push(ETL_MOVE(front()));
+      destination.push_back(ETL_MOVE(front()));
       pop();
     }
 
@@ -526,7 +526,7 @@ namespace etl
 
       for (size_type i = 0; i < other.size(); ++i)
       {
-        push(other.p_buffer[index]);
+        push_back(other.p_buffer[index]);
         index = (index == (CAPACITY - 1)) ? 0 : index + 1;
       }
     }
@@ -543,7 +543,7 @@ namespace etl
 
       for (size_type i = 0; i < other.size(); ++i)
       {
-        push(etl::move(other.p_buffer[index]));
+        push_back(etl::move(other.p_buffer[index]));
         index = (index == (CAPACITY - 1)) ? 0 : index + 1;
       }
     }

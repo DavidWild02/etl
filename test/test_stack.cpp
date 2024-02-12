@@ -95,10 +95,10 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
-      stack.push(2);
-      stack.push(3);
-      stack.push(4);
+      stack.push_back(1);
+      stack.push_back(2);
+      stack.push_back(3);
+      stack.push_back(4);
 
       etl::stack<int, 4> stack2(stack);
 
@@ -119,10 +119,10 @@ namespace
 
       etl::istack<int>* pistack = pstack;
 
-      pistack->push(1);
-      pistack->push(2);
-      pistack->push(3);
-      pistack->push(4);
+      pistack->push_back(1);
+      pistack->push_back(2);
+      pistack->push_back(3);
+      pistack->push_back(4);
 
       delete pistack;
     }
@@ -134,7 +134,7 @@ namespace
 
       CHECK(stack.empty());
 
-      stack.push(ItemNDC("1"));
+      stack.push_back(ItemNDC("1"));
 
       CHECK(!stack.empty());
     }
@@ -146,10 +146,10 @@ namespace
 
       CHECK(!stack.full());
 
-      stack.push(1);
-      stack.push(2);
-      stack.push(3);
-      stack.push(4);
+      stack.push_back(1);
+      stack.push_back(2);
+      stack.push_back(3);
+      stack.push_back(4);
 
       CHECK(stack.full());
     }
@@ -159,9 +159,9 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
-      stack.push(2);
-      stack.push(3);
+      stack.push_back(1);
+      stack.push_back(2);
+      stack.push_back(3);
 
       CHECK_EQUAL(3U, stack.size());
     }
@@ -179,14 +179,14 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
-      stack.push(2);
+      stack.push_back(1);
+      stack.push_back(2);
       stack.clear();
       CHECK_EQUAL(0U, stack.size());
 
       // Do it again to check that clear() didn't screw up the internals.
-      stack.push(1);
-      stack.push(2);
+      stack.push_back(1);
+      stack.push_back(2);
       CHECK_EQUAL(2U, stack.size());
       stack.clear();
       CHECK_EQUAL(0U, stack.size());
@@ -197,14 +197,14 @@ namespace
     {
       etl::stack<ItemNTD, 4> stack;
 
-      stack.push(ItemNTD());
-      stack.push(ItemNTD());
+      stack.push_back(ItemNTD());
+      stack.push_back(ItemNTD());
       stack.clear();
       CHECK_EQUAL(0U, stack.size());
 
       // Do it again to check that clear() didn't screw up the internals.
-      stack.push(ItemNTD());
-      stack.push(ItemNTD());
+      stack.push_back(ItemNTD());
+      stack.push_back(ItemNTD());
       CHECK_EQUAL(2U, stack.size());
       stack.clear();
       CHECK_EQUAL(0U, stack.size());
@@ -215,10 +215,10 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
+      stack.push_back(1);
       CHECK_EQUAL(1U, stack.size());
 
-      stack.push(2);
+      stack.push_back(2);
       CHECK_EQUAL(2U, stack.size());
 
       CHECK_EQUAL(2, stack.top());
@@ -264,10 +264,10 @@ namespace
 
       for (size_t i = 0UL; i < stack.max_size(); ++i)
       {
-        stack.push(1);
+        stack.push_back(1);
       }
 
-      CHECK_THROW(stack.push(1), etl::stack_full);
+      CHECK_THROW(stack.push_back(1), etl::stack_full);
     }
 
     //*************************************************************************
@@ -275,8 +275,8 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
-      stack.push(2);
+      stack.push_back(1);
+      stack.push_back(2);
       stack.pop();
       CHECK_EQUAL(1U, stack.size());
     }
@@ -286,10 +286,10 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
-      stack.push(2);
-      stack.push(3);
-      stack.push(4);
+      stack.push_back(1);
+      stack.push_back(2);
+      stack.push_back(3);
+      stack.push_back(4);
 
       int i;
 
@@ -316,10 +316,10 @@ namespace
       etl::stack<int, 4> stack1;
       etl::stack<int, 4> stack2;
 
-      stack1.push(1);
-      stack1.push(2);
-      stack1.push(3);
-      stack1.push(4);
+      stack1.push_back(1);
+      stack1.push_back(2);
+      stack1.push_back(3);
+      stack1.push_back(4);
 
       stack1.pop_into(stack2);
       CHECK_EQUAL(1U, stack2.size());
@@ -359,7 +359,7 @@ namespace
 
       for (size_t i = 0UL; i < stack.max_size(); ++i)
       {
-        stack.push(1);
+        stack.push_back(1);
       }
 
       for (size_t i = 0UL; i < stack.max_size(); ++i)
@@ -375,9 +375,9 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
-      stack.push(2);
-      stack.push(3);
+      stack.push_back(1);
+      stack.push_back(2);
+      stack.push_back(3);
 
       CHECK_EQUAL(3, stack.top());
 
@@ -394,9 +394,9 @@ namespace
       etl::stack<int, 4> stack;
       const etl::stack<int, 4>& constQueue = stack;
 
-      stack.push(1);
-      stack.push(2);
-      stack.push(3);
+      stack.push_back(1);
+      stack.push_back(2);
+      stack.push_back(3);
 
       CHECK_EQUAL(3, constQueue.top());
 
@@ -412,9 +412,9 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
-      stack.push(2);
-      stack.push(3);
+      stack.push_back(1);
+      stack.push_back(2);
+      stack.push_back(3);
 
       bool pass = true;
 
@@ -445,16 +445,16 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
-      stack.push(2);
-      stack.push(3);
-      stack.push(4);
+      stack.push_back(1);
+      stack.push_back(2);
+      stack.push_back(3);
+      stack.push_back(4);
 
       etl::stack<int, 4> stack2;
 
       // These should be overwritten.
-      stack2.push(5);
-      stack2.push(6);
+      stack2.push_back(5);
+      stack2.push_back(6);
 
       stack2 = stack;
 
@@ -473,10 +473,10 @@ namespace
     {
       etl::stack<int, 4> stack1;
 
-      stack1.push(1);
-      stack1.push(2);
-      stack1.push(3);
-      stack1.push(4);
+      stack1.push_back(1);
+      stack1.push_back(2);
+      stack1.push_back(3);
+      stack1.push_back(4);
 
       etl::stack<int, 4> stack2;
 
@@ -501,10 +501,10 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
-      stack.push(2);
-      stack.push(3);
-      stack.push(4);
+      stack.push_back(1);
+      stack.push_back(2);
+      stack.push_back(3);
+      stack.push_back(4);
 
 #include "etl/private/diagnostic_self_assign_overloaded_push.h" 
       stack = stack;
@@ -530,10 +530,10 @@ namespace
     {
       etl::stack<int, 4> stack;
 
-      stack.push(1);
-      stack.push(2);
-      stack.push(3);
-      stack.push(4);
+      stack.push_back(1);
+      stack.push_back(2);
+      stack.push_back(3);
+      stack.push_back(4);
 
       stack.reverse();
 

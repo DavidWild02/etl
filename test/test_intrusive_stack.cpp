@@ -92,8 +92,8 @@ namespace
       CHECK(stackD.empty());
       CHECK(stackC.empty());
 
-      stackD.push(data1);
-      stackC.push(data2);
+      stackD.push_back(data1);
+      stackC.push_back(data2);
 
       CHECK(!stackD.empty());
       CHECK(!stackC.empty());
@@ -109,12 +109,12 @@ namespace
       etl::intrusive_stack<Data, link0> stackD;
       etl::intrusive_stack<Data, link1> stackC;
 
-      stackD.push(data1);
-      stackD.push(data2);
-      stackD.push(data3);
+      stackD.push_back(data1);
+      stackD.push_back(data2);
+      stackD.push_back(data3);
 
-      stackC.push(data1);
-      stackC.push(data2);
+      stackC.push_back(data1);
+      stackC.push_back(data2);
 
       CHECK_EQUAL(3U, stackD.size());
       CHECK_EQUAL(2U, stackC.size());
@@ -130,12 +130,12 @@ namespace
       etl::intrusive_stack<Data, link0> stackD;
       etl::intrusive_stack<Data, link1> stackC;
 
-      stackD.push(data1);
-      stackD.push(data2);
-      stackD.push(data3);
+      stackD.push_back(data1);
+      stackD.push_back(data2);
+      stackD.push_back(data3);
 
-      stackC.push(data1);
-      stackC.push(data2);
+      stackC.push_back(data1);
+      stackC.push_back(data2);
 
       stackD.clear();
 
@@ -174,19 +174,19 @@ namespace
       etl::intrusive_stack<Data, link0> stackD;
       etl::intrusive_stack<Data, link1> stackC;
 
-      stackD.push(data1);
+      stackD.push_back(data1);
       CHECK_EQUAL(stackD.top(), data1);
 
-      stackD.push(data2);
+      stackD.push_back(data2);
       CHECK_EQUAL(stackD.top(), data2);
 
-      stackD.push(data3);
+      stackD.push_back(data3);
       CHECK_EQUAL(stackD.top(), data3);
 
-      stackC.push(data1);
+      stackC.push_back(data1);
       CHECK_EQUAL(stackC.top(), data1);
 
-      stackC.push(data2);
+      stackC.push_back(data2);
       CHECK_EQUAL(stackC.top(), data2);
     }
 
@@ -200,12 +200,12 @@ namespace
       etl::intrusive_stack<Data, link0> stackD;
       etl::intrusive_stack<Data, link1> stackC;
 
-      stackD.push(data1);
-      stackD.push(data2);
-      stackD.push(data3);
+      stackD.push_back(data1);
+      stackD.push_back(data2);
+      stackD.push_back(data3);
 
-      stackC.push(data1);
-      stackC.push(data2);
+      stackC.push_back(data1);
+      stackC.push_back(data2);
 
       CHECK_EQUAL(stackD.top(), data3);
       stackD.pop();
@@ -232,9 +232,9 @@ namespace
       etl::intrusive_stack<Data, link0> stack1;
       etl::intrusive_stack<Data, link0> stack2;
 
-      stack1.push(data1);
-      stack1.push(data2);
-      stack1.push(data3);
+      stack1.push_back(data1);
+      stack1.push_back(data2);
+      stack1.push_back(data3);
 
       stack1.pop_into(stack2);
       CHECK_EQUAL(2U, stack1.size());
@@ -267,9 +267,9 @@ namespace
       etl::intrusive_stack<Data, link0> stackD;
       const etl::intrusive_stack<Data, link0>& stackDR = stackD;
 
-      stackD.push(data1);
-      stackD.push(data2);
-      stackD.push(data3);
+      stackD.push_back(data1);
+      stackD.push_back(data2);
+      stackD.push_back(data3);
 
       CHECK_EQUAL(stackD.top(), stackDR.top());
       stackD.pop();
@@ -285,7 +285,7 @@ namespace
 
       etl::intrusive_stack<Data, link0> stack;
 
-      stack.push(data1);
+      stack.push_back(data1);
 
       stack.reverse();
 
@@ -304,11 +304,11 @@ namespace
 
       etl::intrusive_stack<Data, link0> stack;
 
-      stack.push(data1);
-      stack.push(data2);
-      stack.push(data3);
-      stack.push(data4);
-      stack.push(data5);
+      stack.push_back(data1);
+      stack.push_back(data2);
+      stack.push_back(data3);
+      stack.push_back(data4);
+      stack.push_back(data5);
 
       stack.reverse();
 

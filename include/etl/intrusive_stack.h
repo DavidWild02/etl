@@ -97,9 +97,9 @@ namespace etl
 
     //*************************************************************************
     /// Adds a value to the stack.
-    ///\param value The value to push to the stack.
+    ///\param value The value to push_back to the stack.
     //*************************************************************************
-    void push(link_type& value)
+    void push_back(link_type& value)
     {
       ETL_ASSERT_OR_RETURN(!value.is_linked(), ETL_ERROR(intrusive_stack_value_is_already_linked));
 
@@ -127,14 +127,14 @@ namespace etl
     //*************************************************************************
     /// Removes the oldest item from the queue and pushes it to the destination.
     /// Undefined behaviour if the queue is already empty.
-    /// NOTE: The destination must be an intrusive container that supports a push(TLink) member function.
+    /// NOTE: The destination must be an intrusive container that supports a push_back(TLink) member function.
     //*************************************************************************
     template <typename TContainer>
     void pop_into(TContainer& destination)
     {
       link_type* p_link = p_top;
       pop();
-      destination.push(*p_link);
+      destination.push_back(*p_link);
     }
 
     //*************************************************************************

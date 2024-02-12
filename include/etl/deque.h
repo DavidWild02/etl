@@ -1711,7 +1711,7 @@ namespace etl
     //*************************************************************************
     /// Adds an item to the back of the deque.
     /// If asserts or exceptions are enabled, throws an etl::deque_full if the deque is already full.
-    ///\param item The item to push to the deque.
+    ///\param item The item to push_back to the deque.
     //*************************************************************************
     void push_back(const_reference item)
     {
@@ -1725,7 +1725,7 @@ namespace etl
     //*************************************************************************
     /// Adds an item to the back of the deque.
     /// If asserts or exceptions are enabled, throws an etl::deque_full if the deque is already full.
-    ///\param item The item to push to the deque.
+    ///\param item The item to push_back to the deque.
     //*************************************************************************
     void push_back(rvalue_reference item)
     {
@@ -1861,7 +1861,7 @@ namespace etl
     //*************************************************************************
     /// Adds an item to the front of the deque.
     /// If asserts or exceptions are enabled, throws an etl::deque_full if the deque is already full.
-    ///\param item The item to push to the deque.
+    ///\param item The item to push_back to the deque.
     //*************************************************************************
     void push_front(const_reference item)
     {
@@ -1875,7 +1875,7 @@ namespace etl
     //*************************************************************************
     /// Adds an item to the front of the deque.
     /// If asserts or exceptions are enabled, throws an etl::deque_full if the deque is already full.
-    ///\param item The item to push to the deque.
+    ///\param item The item to push_back to the deque.
     //*************************************************************************
     void push_front(rvalue_reference item)
     {

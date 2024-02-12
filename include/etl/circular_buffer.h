@@ -865,11 +865,11 @@ namespace etl
     }
 
     //*************************************************************************
-    /// push.
+    /// push_back.
     /// Adds an item to the buffer.
     /// If the buffer is filled then the oldest item is overwritten.
     //*************************************************************************
-    void push(const_reference item)
+    void push_back(const_reference item)
     {
       ::new (&pbuffer[in]) T(item);
       increment_in();
@@ -889,11 +889,11 @@ namespace etl
 
 #if ETL_USING_CPP11
     //*************************************************************************
-    /// push.
+    /// push_back.
     /// Adds an item to the buffer.
     /// If the buffer is filled then the oldest item is overwritten.
     //*************************************************************************
-    void push(rvalue_reference item)
+    void push_back(rvalue_reference item)
     {
       ::new (&pbuffer[in]) T(etl::move(item));
       increment_in();
@@ -916,11 +916,11 @@ namespace etl
     /// Push a buffer from an iterator range.
     //*************************************************************************
     template <typename TIterator>
-    void push(TIterator first, const TIterator& last)
+    void push_back(TIterator first, const TIterator& last)
     {
       while (first != last)
       {
-        push(*first);
+        push_back(*first);
         ++first;
       }
     }
@@ -1116,7 +1116,7 @@ namespace etl
     {
       while (first != last)
       {
-        this->push(*first);
+        this->push_back(*first);
         ++first;
       }
     }
@@ -1128,7 +1128,7 @@ namespace etl
     circular_buffer(std::initializer_list<T> init)
       : icircular_buffer<T>(reinterpret_cast<T*>(buffer.raw), MAX_SIZE)
     {
-      this->push(init.begin(), init.end());
+      this->push_back(init.begin(), init.end());
     }
 #endif
 
@@ -1140,7 +1140,7 @@ namespace etl
     {
       if (this != &other)
       {
-        this->push(other.begin(), other.end());
+        this->push_back(other.begin(), other.end());
       }
     }
 
@@ -1152,7 +1152,7 @@ namespace etl
       if (this != &other)
       {
         this->clear();
-        this->push(other.begin(), other.end());
+        this->push_back(other.begin(), other.end());
       }
 
       return *this;
@@ -1170,7 +1170,7 @@ namespace etl
         typename etl::icircular_buffer<T>::iterator itr = other.begin();
         while (itr != other.end())
         {
-          this->push(etl::move(*itr));
+          this->push_back(etl::move(*itr));
           ++itr;
         }
       }
@@ -1187,7 +1187,7 @@ namespace etl
 
         for (typename etl::icircular_buffer<T>::const_iterator itr = other.begin(); itr != other.end(); ++itr)
         {
-          this->push(etl::move(*itr));
+          this->push_back(etl::move(*itr));
         }
       }
 
@@ -1265,7 +1265,7 @@ namespace etl
     {
       while (first != last)
       {
-        this->push(*first);
+        this->push_back(*first);
         ++first;
       }
     }
@@ -1277,7 +1277,7 @@ namespace etl
     circular_buffer_ext(std::initializer_list<T> init, void* buffer, size_t max_size)
       : icircular_buffer<T>(reinterpret_cast<T*>(buffer), max_size)
     {
-      this->push(init.begin(), init.end());
+      this->push_back(init.begin(), init.end());
     }
 #endif
 
@@ -1289,7 +1289,7 @@ namespace etl
     {
       if (this != &other)
       {
-        this->push(other.begin(), other.end());
+        this->push_back(other.begin(), other.end());
       }
     }
 
@@ -1307,7 +1307,7 @@ namespace etl
       if (this != &other)
       {
         this->clear();
-        this->push(other.begin(), other.end());
+        this->push_back(other.begin(), other.end());
       }
 
       return *this;
@@ -1325,7 +1325,7 @@ namespace etl
         typename etl::icircular_buffer<T>::iterator itr = other.begin();
         while (itr != other.end())
         {
-          this->push(etl::move(*itr));
+          this->push_back(etl::move(*itr));
           ++itr;
         }
       }
@@ -1342,7 +1342,7 @@ namespace etl
 
         for (typename etl::icircular_buffer<T>::iterator itr = other.begin(); itr != other.end(); ++itr)
         {
-          this->push(etl::move(*itr));
+          this->push_back(etl::move(*itr));
         }
       }
 
